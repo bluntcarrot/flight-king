@@ -15,6 +15,9 @@ import router from '@/router'
 
 Vue.config.productionTip = false
 
+// import VueCookies from 'vue-cookies'
+// Vue.use(VueCookies)
+
 /* eslint-disable no-new */
 new Vue({
   i18n,

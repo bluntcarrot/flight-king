@@ -121,6 +121,7 @@
               </v-layout>
             </v-container>
 
+            <transition name="fade">
             <v-container
               v-show="modifyAddPassengers || modifyRemovePassengers"
               fill-height
@@ -206,6 +207,7 @@
 
               </v-layout>
             </v-container>
+            </transition>
           </v-card-title>
 
           <v-form>
@@ -268,18 +270,13 @@
                       />
                     </template>
                     <v-date-picker
+                      @input="onDepartSelect()"
                       v-model="departureDate"
                       no-title
                       scrollable>
                       <v-spacer/>
-                      <v-btn
-                        flat
-                        color="primary"
-                        @click="menu = false">Cancel</v-btn>
-                      <v-btn
-                        flat
-                        color="primary"
-                        @click="$refs.menu.save(departureDate)">OK</v-btn>
+                      <!-- <label>Flexible Date Range</label>
+                      <input type="checkbox" label="Date Range?" /> -->
                     </v-date-picker>
                   </v-menu>
                 </v-flex>
@@ -310,18 +307,11 @@
                       />
                     </template>
                     <v-date-picker
+                      @input="$refs.menu2.save(returnDate)"
                       v-model="returnDate"
                       no-title
                       scrollable>
                       <v-spacer/>
-                      <v-btn
-                        flat
-                        color="primary"
-                        @click="menu2 = false">Cancel</v-btn>
-                      <v-btn
-                        flat
-                        color="primary"
-                        @click="$refs.menu2.save(returnDate)">OK</v-btn>
                     </v-date-picker>
                   </v-menu>
 
@@ -352,6 +342,7 @@
       </v-flex>
 
       <v-flex
+        v-show="showFlights"
         xs12
         md11
       >
@@ -366,12 +357,10 @@
             <v-data-table
               :headers="headers"
               :items="items"
-
-              :loading="loading"
+              :loading="true"
               :hide-headers="isMobile"
               :class="{mobile: isMobile}"
             >
-              <!-- TO DO: RESPONSE EXAMPLE: https://codepen.io/Jayesh_v/pen/xmModE -->
               <template
                 slot="headerCell"
                 slot-scope="{ header }"
@@ -538,6 +527,11 @@
                 </tr>
                 <!-- END Return flight row -->
               </template>
+              <template v-slot:no-data>
+                <v-alert :value="true" color="error" icon="mdi-alert">
+                  No flights found
+                </v-alert>
+              </template>
             </v-data-table>
           </v-layout>
 
@@ -554,14 +548,58 @@
         </material-card>
       </v-flex>
 
+      <!-- 
+        TO DO: Implement Popular Destinations after location data is obtained
+        
+        <v-flex
+        xs12
+        md11
+      >
+        <material-card>
+          <v-card-title class="v-card--material__header v-card v-sheet theme--dark search-offset elevation-10">
+
+            <v-flex
+              xs12
+            >
+              <v-img
+                :src="imgLink"
+                aspect-ratio="1"
+                max-height="125"
+                width="125"
+                class=""
+                center
+              />
+            </v-flex>
+            <v-container
+              fill-height
+              fluid
+              grid-list-xl>
+              <v-layout
+                row
+                wrap>
+
+
+              </v-layout>
+            </v-container>
+          </v-card-title>
+
+          <h3>Popular Destinations</h3>
+
+        </material-card>
+      </v-flex> -->
+
     </v-layout>
   </v-container>
 </template>
 
 <script>
 import axios from 'axios'
-import { INITIAL_LOCATION_DATA } from '../utils/consts'
+import { INITIAL_LOCATION_DATA, AIRPORTS_ARR } from '../utils/consts'
+import { dateUtils } from '../utils/dateUtils'
 import { ModelListSelect } from 'vue-search-select'
+// import VueCookies from 'vue-cookies'
+
+// VueCookies.config('7d')
 
 export default {
   components: {
@@ -592,6 +630,7 @@ export default {
       departureDate: new Date().toISOString().substr(0, 10),
       returnDate: new Date().toISOString().substr(0, 10),
       initialLocation: INITIAL_LOCATION_DATA,
+      showFlights: false,
       loading: false,
       headers: [
         {
@@ -636,36 +675,42 @@ export default {
     }
   },
   mounted () {
-    // axios
-    // .get('https://api.ipdata.co/?api-key=test')
-    // .then(response => (console.log(JSON.stringify(response.data, null, 4))))
-
     // TO DO: get location data and populate from select with closest airport
-    console.log(this.initialLocation)
-    // console.log(this.flightData)
+    // if(VueCookies.isKey('travel-king')){
+    //   alert('cookie found')
+    //   console.log(VueCookies.get('travel-king'))
+    // } else {
+    //   // TO DO: Put contents of response into cookie
+    //   let user = { id:1, name:'Journal',session:'25j_7Sl6xDq2Kc3ym0fmrSSk2xV2XkUkX' }
+    //   VueCookies.set('travel-king',user)
+    //   axios
+    //   .get('https://api.ipdata.co/?api-key=test')
+    //   .then(response => (console.log(JSON.stringify(response.data, null, 4))))
+    // }
+    // console.log(this.initialLocation)
 
     this.items = this.flightData
   },
   methods: {
+    onDepartSelect () {
+      this.$refs.menu.save(this.departureDate)
+      if (this.returnDate != this.departureDate) {
+        this.returnDate = this.departureDate
+      }
+    },
 
     searchFlights () {
       if (this.searchFrom.length > 0 && this.searchTo.length > 0) {
         this.loading = true
-        console.log(this.searchFrom + 1)
-        console.log(this.searchTo + 1)
-        console.log("TO DO: fix dateFormat method")
-        console.log("Departure Date = ", this.dateFormat(this.departureDate))
-        console.log("Return Date = ", this.dateFormat(this.returnDate))
-
         let flightType = (this.roundTrip === 'Round trip' ? 'round' : 'oneway')
 
-        let paramsObj = {
+        let params = {
           fly_from: this.searchFrom,
           fly_to: this.searchTo,
-          date_from: this.dateFormat(this.departureDate),
-          date_to: this.dateFormat(this.departureDate),
-          return_to: (flightType === 'oneway' ? null : this.dateFormat(this.returnDate)),
-          return_from: (flightType === 'oneway' ? null : this.dateFormat(this.returnDate)),
+          date_from: dateUtils.dateFormat(this.departureDate),
+          date_to: dateUtils.dateFormat(this.departureDate),
+          return_to: (flightType === 'oneway' ? null : dateUtils.dateFormat(this.returnDate)),
+          return_from: (flightType === 'oneway' ? null : dateUtils.dateFormat(this.returnDate)),
           curr: 'USD',
           flight_type: flightType,
           adults: this.adults,
@@ -676,10 +721,11 @@ export default {
 
         axios
           .get('https://api.skypicker.com/flights', {
-            params: paramsObj
+            params: params
           })
           .then(response => {
             this.items = response.data.data
+            this.showFlights = true
             this.loading = false
             this.showFlightDetailsToggle = (this.roundTrip === 'Round trip')
           })
@@ -702,28 +748,10 @@ export default {
       window.open(link)
     },
 
-    dateFormat (dateString) {
-      let formattedDate = new Date(dateString)
-      let dd = formattedDate.getDate()
-      let mm = formattedDate.getMonth() + 1 // January is 0
-
-      let yyyy = formattedDate.getFullYear()
-      if (dd < 10) {
-        dd = '0' + dd
-      }
-      if (mm < 10) {
-        mm = '0' + mm
-      }
-      formattedDate = dd + '/' + mm + '/' + yyyy
-      console.log(formattedDate)
-      return formattedDate
-    },
-
     filterAirportData (locations) {
       let onlyAirports = []
       for (let location in locations) {
         if (locations[location].type === 'airport') {
-          console.log(locations[location])
           onlyAirports.push(locations[location])
         }
       }
@@ -814,6 +842,11 @@ export default {
         this[passengerType] = this[passengerType] - 1
       }
       this.passengerTotal = this.adults + this.children + this.infants
+      if (isRemove) {
+        this.showModifyPassengers('Remove')
+      } else {
+        this.showModifyPassengers('Add')
+      }
     },
 
     onResize () {
@@ -825,23 +858,75 @@ export default {
     //   console.log(row)
     // },
 
-    // async fetchAirportData () {
-    //   let response = await axios.get('/airports.js')
-    //   return response.data
+    // async loadPopularDestinations () {
+    //   let flightType = 'round'
+    //   // show oneway or round trip?
+    //   // Math.floor(Math.random() * 10) + 1;  // returns a random integer from 1 to 10
+    //   let params = {
+    //     fly_from: this.searchFrom,
+    //     fly_to: this.searchTo,
+    //     date_from: dateUtils.dateFormat(this.departureDate),
+    //     date_to: dateUtils.dateFormat(this.departureDate),
+    //     return_to: (flightType === 'oneway' ? null : dateUtils.dateFormat(this.returnDate)),
+    //     return_from: (flightType === 'oneway' ? null : dateUtils.dateFormat(this.returnDate)),
+    //     curr: 'USD',
+    //     flight_type: flightType,
+    //     adults: this.adults,
+    //     children: this.children,
+    //     infants: this.infants,
+    //     partner: 'picky'
+    //   }
+
+    //   AIRPORTS_ARR.forEach(destination => {
+    //     console.log(destination)
+    //     // axios
+    //     //   .get('https://api.skypicker.com/flights', {
+    //     //     params: params
+    //     //   })
+    //     //   .then(response => {
+    //     //     this.items = response.data.data
+    //     //     this.showFlights = true
+    //     //     this.loading = false
+    //     //     this.showFlightDetailsToggle = (this.roundTrip === 'Round trip')
+    //     //   })
+
+    //   })
     // }
 
+  },
+  created () {
+    // TO DO: this function is saved in snippets to test and implement
+// function rngArray(arraySize, min, max) {
+//     const tmpArray = new Array()
+//   return new Array(arraySize).fill(0).map(function(n) {
+//       function rng () {
+//           return Math.floor(Math.random() * (max - min) + min)
+//       }
+//     let newInt = rng ()//Math.floor(Math.random() * (max - min) + min)
+//     if (tmpArray.includes(newInt)) {
+//         console.log(newInt)
+//         return
+//     }
+//     tmpArray.push(newInt)
+//     return newInt
+//   });
+// }
+
+    // Random Int between 0-14
+    // TO DO : need to check if random number exists
+    // const rng = [...Array(8)].map(e=>~~(Math.random()*15))
+    // console.log(rng)
+
+
+    // AIRPORTS_ARR.forEach(destination => {
+    //   console.log(destination)
+    // })
   }
-  // created () {
-  //   // this.fetchAirportData()
-  //   //   .then(response => this.airportData = response)
-  //   //   .catch(err => console.log(err))
-  //   //console.log(this.airportData);
-  // }
 }
 </script>
 
 <style>
-  .v-btn .v-btn--flat .v-btn--icon .theme--light {
+  .layout .v-datatable__actions__range-controls button {
     color: rgba(0,0,0,.87) !important;
   }
   .small-input .theme--light.v-text-field>.v-input__control>.v-input__slot:before {
@@ -953,4 +1038,11 @@ export default {
     height: 40px; */
     font-weight: bold;
   }
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .1s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
 </style>

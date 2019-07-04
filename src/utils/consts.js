@@ -1,3 +1,5 @@
+export const AIRPORTS_ARR = ['JFK','SEA','MDW','MCO','LAX','DEN','RNO','ATL','LAS','SFO','SWF','STL']
+
 export const INITIAL_LOCATION_DATA = {
   'ip': '',
   'is_eu': false,
