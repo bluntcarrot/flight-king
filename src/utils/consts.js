@@ -1,4 +1,20 @@
-export const AIRPORTS_ARR = ['JFK','SEA','MDW','MCO','LAX','DEN','RNO','ATL','LAS','SFO','SWF','STL']
+export const AIRPORTS_ARR = [
+  'JFK',
+  'SEA',
+  'MDW',
+  'MCO',
+  'LAX',
+  'DEN',
+  'RNO',
+  'ATL',
+  'LAS',
+  'SFO',
+  'SWF',
+  'STL',
+  'ANC',
+  'IND',
+  'MSP'
+]
 
 export const INITIAL_LOCATION_DATA = {
   'ip': '',

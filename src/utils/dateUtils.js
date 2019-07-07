@@ -2,7 +2,7 @@ export const dateUtils = {
   isValidDate: (dateText) => {
     if (dateText) {
       try {
-        const errorMessage = ''             
+        let errorMessage = ''
         const dateParts = dateText.split('/')
         if (dateParts.length > 0) {
           let day = parseInt(dateParts[0])
@@ -13,12 +13,12 @@ export const dateUtils = {
             errorMessage = 'The month cannot be greater than 12.'
           }
 
-          if (errorMessage == '') {
+          if (errorMessage === '') {
             // assuming no leap year by default
             var daysPerMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
-            if (year % 4 == 0) {
-                // current year is a leap year
-                daysPerMonth[1] = 29
+            if (year % 4 === 0) {
+              // current year is a leap year
+              daysPerMonth[1] = 29
             }
 
             if (day > daysPerMonth[month - 1]) {
@@ -27,7 +27,7 @@ export const dateUtils = {
             }
           }
         } else {
-          errorMessage = "Please enter the date in dd/mm/yyyy format"
+          errorMessage = 'Please enter the date in dd/mm/yyyy format'
         }
 
         if (errorMessage) {

@@ -2,17 +2,21 @@
   <v-container
     fill-height
     fluid
-    grid-list-xl>
+    grid-list-xl
+  >
+
     <v-layout
       v-resize="onResize"
       justify-center
       wrap
     >
-      <v-flex
-        xs12
-        md10
-        lg9
 
+      <v-flex
+        style="padding-top: 60px;"
+        xs12
+        md9
+        lg8
+        xl7
       >
         <material-card>
           <v-card-title class="v-card--material__header v-card v-sheet theme--dark search-offset elevation-10">
@@ -25,29 +29,166 @@
                 aspect-ratio="1"
                 max-height="125"
                 width="125"
-                class=""
+                class="neg-top-margin"
                 center
               />
             </v-flex>
-            <div>
-              <div> <p>Search Flights</p> </div>
-            </div>
 
-            <br>
+            <!-- <v-flex
+              xs12
+              class="neg-top-margin"
+            >
+              <p>Search Flights</p>
+            </v-flex> -->
+
+            <v-flex
+              xs12
+              md12
+            >
+              <material-card
+                class="popular-dest-card"
+              >
+
+                <v-container
+                  fill-height
+                  fluid
+                  grid-list-xl
+                  style="margin-top: -20px; padding: 0;"
+                >
+                  <v-layout
+                    row
+                    wrap
+                  >
+
+                    <!-- <v-flex
+                      xs12
+                    >
+                      <p>
+                        <strong>Popular Destinations</strong>
+                      </p>
+                    </v-flex> -->
+
+                    <v-flex
+                      xs6
+                      sm6
+                      md4
+                      lg3
+                      offset-lg1
+                    >
+                      <a href="#">
+                        <div class="popular-cards">
+                          <div style="background-image: url(&quot;//t2.gstatic.com/images?q=tbn:ANd9GcSOqctRBN11M_JybWWurC4mNxLmSZwXb_PjvHyTpVQBwD8a1o7tZZL2saF2rgPa4U9IU-dPeahv&quot;);">
+                          </div>
+                          <div>
+                            <div style="font-size:12px;">
+                              <h4><strong style="font-size:15px;">Orlando</strong></h4>
+                              <div>
+                                <span>
+                                  <span>One Way</span>
+                                </span>
+                              </div>
+                              <div>
+                                <img src="//www.gstatic.com/flights/airline_logos/32px/AA.png" class="logo" alt="American" title="American" height="16" width="16">
+                                <span> 1 stop</span>
+                                <br>
+                                <span>5h 5m</span>
+                              </div>
+                            </div>
+                            <div>
+                              <span><strong style="font-size:13px;">Great value $299</strong></span>
+                            </div>
+                          </div>
+                        </div>
+                      </a>
+                    </v-flex>
+
+                    <v-flex
+                      xs6
+                      sm6
+                      md4
+                      lg3
+                    >
+                      <a href="#">
+                        <div class="popular-cards">
+                          <div style="background-image: url(&quot;//t2.gstatic.com/images?q=tbn:ANd9GcSOqctRBN11M_JybWWurC4mNxLmSZwXb_PjvHyTpVQBwD8a1o7tZZL2saF2rgPa4U9IU-dPeahv&quot;);">
+                          </div>
+                          <div>
+                            <div style="font-size:12px;">
+                              <h4><strong style="font-size:15px;">Reno</strong></h4>
+                              <div>
+                                <span>
+                                  <span>One Way</span>
+                                </span>
+                              </div>
+                              <div>
+                                <img src="//www.gstatic.com/flights/airline_logos/32px/AA.png" class="logo" alt="American" title="American" height="16" width="16">
+                                <span> Nonstop</span>
+                                <br>
+                                <span>6h 5m</span>
+                              </div>
+                            </div>
+                            <div>
+                              <span><strong style="font-size:13px;">Great value $221</strong></span>
+                            </div>
+                          </div>
+                        </div>
+                      </a>
+                    </v-flex>
+
+                    <v-flex
+                      hidden-sm-and-down
+                      md4
+                      lg3
+                    >
+                      <a href="#">
+                        <div class="popular-cards">
+                          <div style="background-image: url(&quot;//t2.gstatic.com/images?q=tbn:ANd9GcSOqctRBN11M_JybWWurC4mNxLmSZwXb_PjvHyTpVQBwD8a1o7tZZL2saF2rgPa4U9IU-dPeahv&quot;);">
+                          </div>
+                          <div>
+                            <div style="font-size:12px;">
+                              <h4><strong style="font-size:15px;">New York</strong></h4>
+                              <div>
+                                <span>
+                                  <span>One Way</span>
+                                </span>
+                              </div>
+                              <div>
+                                <img src="//www.gstatic.com/flights/airline_logos/32px/AA.png" class="logo" alt="American" title="American" height="16" width="16">
+                                <span> 1 stop</span>
+                                <br>
+                                <span>2h 5m</span>
+                              </div>
+                            </div>
+                            <div>
+                              <span><strong style="font-size:13px;">Great value $144</strong></span>
+                            </div>
+                          </div>
+                        </div>
+                      </a>
+                    </v-flex>
+
+                  </v-layout>
+                </v-container>
+              </material-card>
+            </v-flex>
+
             <v-container
               fill-height
               fluid
-              grid-list-xl>
+              grid-list-xl
+              style="padding-bottom:5px;"
+            >
               <v-layout
                 row
-                wrap>
+                wrap
+              >
 
                 <v-flex
                   xs12
                   sm2
-                  md2
                   d-flex
-                  class="small-input">
+                  class="small-input"
+                >
                   <div style="text-align: center;">
                     <div style="display: inline-block; width:100px;">
                       <v-select
@@ -122,91 +263,91 @@
             </v-container>
 
             <transition name="fade">
-            <v-container
-              v-show="modifyAddPassengers || modifyRemovePassengers"
-              fill-height
-              fluid
-              grid-list-xl>
-              <v-layout wrap>
+              <v-container
+                v-show="modifyAddPassengers || modifyRemovePassengers"
+                fill-height
+                fluid
+                grid-list-xl>
+                <v-layout wrap>
 
-                <v-flex
-                  v-show="modifyAddPassengers"
-                  xs14
-                  class="py-2 text-xs-center">
-                  <v-alert
-                    :value="true"
-                    color="white"
-                    outline
-                    icon="mdi-plus"
-                    type="success"
-                  >
-                    <p>Add Passenger</p>
-                    <span style="background:inherit;">
-                      <v-btn
-                        flat
-                        value="adult"
-                        @click="modifyPassengerTotal('adults', false)">
-                        <strong>{{ adults }}
-                          Adults</strong>
-                      </v-btn>
-                      <v-btn
-                        flat
-                        value="children"
-                        @click="modifyPassengerTotal('children', false)">
-                        <strong>{{ children }}
-                          Children</strong>
-                      </v-btn>
-                      <v-btn
-                        flat
-                        value="infant"
-                        @click="modifyPassengerTotal('infants', false)">
-                        <strong>{{ infants }}
-                          Infants</strong>
-                      </v-btn>
-                    </span>
-                  </v-alert>
-                </v-flex>
+                  <v-flex
+                    v-show="modifyAddPassengers"
+                    xs14
+                    class="py-2 text-xs-center">
+                    <v-alert
+                      :value="true"
+                      color="white"
+                      outline
+                      icon="mdi-plus"
+                      type="success"
+                    >
+                      <p>Add Passenger</p>
+                      <span style="background:inherit;">
+                        <v-btn
+                          flat
+                          value="adult"
+                          @click="modifyPassengerTotal('adults', false)">
+                          <strong>{{ adults }}
+                            Adults</strong>
+                        </v-btn>
+                        <v-btn
+                          flat
+                          value="children"
+                          @click="modifyPassengerTotal('children', false)">
+                          <strong>{{ children }}
+                            Children</strong>
+                        </v-btn>
+                        <v-btn
+                          flat
+                          value="infant"
+                          @click="modifyPassengerTotal('infants', false)">
+                          <strong>{{ infants }}
+                            Infants</strong>
+                        </v-btn>
+                      </span>
+                    </v-alert>
+                  </v-flex>
 
-                <v-flex
-                  v-show="modifyRemovePassengers"
-                  xs14
-                  class="py-2 text-xs-center">
-                  <v-alert
-                    :value="true"
-                    color="white"
-                    outline
-                    icon="mdi-minus"
-                    type="error"
-                  >
-                    <p>Remove Passenger</p>
-                    <span style="background:inherit;">
-                      <v-btn
-                        flat
-                        value="adult"
-                        @click="modifyPassengerTotal('adults', true)">
-                        <strong>{{ adults }}
-                          Adults</strong>
-                      </v-btn>
-                      <v-btn
-                        flat
-                        value="children"
-                        @click="modifyPassengerTotal('children', true)">
-                        <strong>{{ children }}
-                          Children</strong>
-                      </v-btn>
-                      <v-btn
-                        flat
-                        value="infant"
-                        @click="modifyPassengerTotal('infants', true)">
-                        <strong>{{ infants }}
-                          Infants</strong>
-                      </v-btn>
-                    </span>
-                  </v-alert>
-                </v-flex>
+                  <v-flex
+                    v-show="modifyRemovePassengers"
+                    xs14
+                    class="py-2 text-xs-center">
+                    <v-alert
+                      :value="true"
+                      color="white"
+                      outline
+                      icon="mdi-minus"
+                      type="error"
+                    >
+                      <p>Remove Passenger</p>
+                      <span style="background:inherit;">
+                        <v-btn
+                          flat
+                          value="adult"
+                          @click="modifyPassengerTotal('adults', true)">
+                          <strong>{{ adults }}
+                            Adults</strong>
+                        </v-btn>
+                        <v-btn
+                          flat
+                          value="children"
+                          @click="modifyPassengerTotal('children', true)">
+                          <strong>{{ children }}
+                            Children</strong>
+                        </v-btn>
+                        <v-btn
+                          flat
+                          value="infant"
+                          @click="modifyPassengerTotal('infants', true)">
+                          <strong>{{ infants }}
+                            Infants</strong>
+                        </v-btn>
+                      </span>
+                    </v-alert>
+                  </v-flex>
 
-              </v-layout>
-            </v-container>
+                </v-layout>
+              </v-container>
             </transition>
           </v-card-title>
 
@@ -270,10 +411,10 @@
                       />
                     </template>
                     <v-date-picker
-                      @input="onDepartSelect()"
                       v-model="departureDate"
                       no-title
-                      scrollable>
+                      scrollable
+                      @input="onDepartSelect()">
                       <v-spacer/>
                       <!-- <label>Flexible Date Range</label>
                       <input type="checkbox" label="Date Range?" /> -->
@@ -307,10 +448,10 @@
                       />
                     </template>
                     <v-date-picker
-                      @input="$refs.menu2.save(returnDate)"
                       v-model="returnDate"
                       no-title
-                      scrollable>
+                      scrollable
+                      @input="$refs.menu2.save(returnDate)">
                       <v-spacer/>
                     </v-date-picker>
                   </v-menu>
@@ -528,7 +669,10 @@
                 <!-- END Return flight row -->
               </template>
               <template v-slot:no-data>
-                <v-alert :value="true" color="error" icon="mdi-alert">
+                <v-alert
+                  :value="true"
+                  color="error"
+                  icon="mdi-alert">
                   No flights found
                 </v-alert>
               </template>
@@ -548,58 +692,15 @@
         </material-card>
       </v-flex>
 
-      <!-- 
-        TO DO: Implement Popular Destinations after location data is obtained
-        
-        <v-flex
-        xs12
-        md11
-      >
-        <material-card>
-          <v-card-title class="v-card--material__header v-card v-sheet theme--dark search-offset elevation-10">
-
-            <v-flex
-              xs12
-            >
-              <v-img
-                :src="imgLink"
-                aspect-ratio="1"
-                max-height="125"
-                width="125"
-                class=""
-                center
-              />
-            </v-flex>
-            <v-container
-              fill-height
-              fluid
-              grid-list-xl>
-              <v-layout
-                row
-                wrap>
-
-
-              </v-layout>
-            </v-container>
-          </v-card-title>
-
-          <h3>Popular Destinations</h3>
-
-        </material-card>
-      </v-flex> -->
-
     </v-layout>
   </v-container>
 </template>
 
 <script>
 import axios from 'axios'
-import { INITIAL_LOCATION_DATA, AIRPORTS_ARR } from '../utils/consts'
+import { AIRPORTS_ARR } from '../utils/consts'
 import { dateUtils } from '../utils/dateUtils'
 import { ModelListSelect } from 'vue-search-select'
-// import VueCookies from 'vue-cookies'
-
-// VueCookies.config('7d')
 
 export default {
   components: {
@@ -629,7 +730,6 @@ export default {
       fromResults: [],
       departureDate: new Date().toISOString().substr(0, 10),
       returnDate: new Date().toISOString().substr(0, 10),
-      initialLocation: INITIAL_LOCATION_DATA,
       showFlights: false,
       loading: false,
       headers: [
@@ -681,7 +781,7 @@ export default {
     //   console.log(VueCookies.get('travel-king'))
     // } else {
     //   // TO DO: Put contents of response into cookie
-    //   let user = { id:1, name:'Journal',session:'25j_7Sl6xDq2Kc3ym0fmrSSk2xV2XkUkX' }
+    //   let user = { id:1, ,flight:'25j_7Sl6xDq2Kc3ym0fmrSSk2xV2XkUkX' }
     //   VueCookies.set('travel-king',user)
     //   axios
     //   .get('https://api.ipdata.co/?api-key=test')
@@ -691,10 +791,84 @@ export default {
 
     this.items = this.flightData
   },
+  created () {
+    // Array of Unique Random Ints between min-max values
+    const rngArray = function (size, min, max) {
+      const tmpArray = new Array()
+
+      return new Array(size).fill(0).map(function (n) {
+        function rng () {
+          let tmpInt = Math.floor(Math.random() * (max - min) + min)
+          return (tmpArray.includes(tmpInt) ? rng() : tmpInt)
+        }
+
+        let newInt = rng()
+        tmpArray.push(newInt)
+        return newInt
+      })
+    }
+
+    const randomDests = rngArray(6, 0, 15)
+    let popDest1 = null
+    let popDest2 = null
+    let popDest3 = null
+
+    /* Pairing random destinations to use as to/from in popular destinations component
+    Eventually this will get the clients location and do the pairing from that */
+    randomDests.forEach((destination, index) => {
+      if (index % 2 === 1) return
+
+      if (popDest1 === null) {
+        popDest1 = {}
+        popDest1.from = AIRPORTS_ARR[destination]
+        popDest1.to = AIRPORTS_ARR[randomDests[index + 1]]
+      } else if (popDest2 === null) {
+        popDest2 = {}
+        popDest2.from = AIRPORTS_ARR[destination]
+        popDest2.to = AIRPORTS_ARR[randomDests[index + 1]]
+      } else {
+        popDest3 = {}
+        popDest3.from = AIRPORTS_ARR[destination]
+        popDest3.to = AIRPORTS_ARR[randomDests[index + 1]]
+      }
+    })
+
+    const destArray = [ popDest1, popDest2, popDest3 ]
+
+    destArray.forEach((trip, index) => {
+      let date_from = new Date()
+      date_from.setDate(date_from.getDate() + Math.floor(Math.random() * (75 - 10) + 10))
+
+      let params = {
+        fly_from: trip.from,
+        fly_to: trip.to,
+        date_from: dateUtils.dateFormat(date_from),
+        date_to: dateUtils.dateFormat(date_from),
+        return_to: null,
+        return_from: null,
+        curr: 'USD',
+        flight_type: 'oneway',
+        adults: 1,
+        children: 0,
+        infants: 0,
+        limit: 1,
+        partner: 'picky'
+      }
+      console.log(params)
+      // axios
+      //   .get('https://api.skypicker.com/flights', {
+      //     params: params
+      //   })
+      //   .then(response => {
+      //     console.log(response.data.data)
+      //   })
+    })
+
+  },
   methods: {
     onDepartSelect () {
       this.$refs.menu.save(this.departureDate)
-      if (this.returnDate != this.departureDate) {
+      if (this.returnDate !== this.departureDate) {
         this.returnDate = this.departureDate
       }
     },
@@ -893,34 +1067,6 @@ export default {
     //   })
     // }
 
-  },
-  created () {
-    // TO DO: this function is saved in snippets to test and implement
-// function rngArray(arraySize, min, max) {
-//     const tmpArray = new Array()
-//   return new Array(arraySize).fill(0).map(function(n) {
-//       function rng () {
-//           return Math.floor(Math.random() * (max - min) + min)
-//       }
-//     let newInt = rng ()//Math.floor(Math.random() * (max - min) + min)
-//     if (tmpArray.includes(newInt)) {
-//         console.log(newInt)
-//         return
-//     }
-//     tmpArray.push(newInt)
-//     return newInt
-//   });
-// }
-
-    // Random Int between 0-14
-    // TO DO : need to check if random number exists
-    // const rng = [...Array(8)].map(e=>~~(Math.random()*15))
-    // console.log(rng)
-
-
-    // AIRPORTS_ARR.forEach(destination => {
-    //   console.log(destination)
-    // })
   }
 }
 </script>
@@ -1033,16 +1179,34 @@ export default {
   .flex-item {
     padding: 5px;
     width: 100%;
-    /*
-    width: 50%;
-    height: 40px; */
     font-weight: bold;
   }
 
 .fade-enter-active, .fade-leave-active {
   transition: opacity .1s;
 }
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+.fade-enter, .fade-leave-to {
   opacity: 0;
+}
+.neg-top-margin {
+  margin-top:-20px;
+}
+
+.popular-cards {
+  border: 0;
+  border-radius: 8px;
+  box-shadow: 0 1px 2px rgba(238, 238, 238, 0.82), 0 1px 3px 1px rgba(238, 238, 238, 0.82) !important;
+  padding: 10px;
+  background: #fff;
+  color: initial;
+}
+
+.popular-dest-card {
+  background: inherit !important;
+  box-shadow: none !important;
+}
+
+.popular-dest-card .v-card__text {
+  padding: 5px;
 }
 </style>
