@@ -41,7 +41,7 @@
               <p>Search Flights</p>
             </v-flex> -->
 
-            <v-flex
+            <!-- <v-flex
               xs12
               md12
             >
@@ -59,14 +59,6 @@
                     row
                     wrap
                   >
-
-                    <!-- <v-flex
-                      xs12
-                    >
-                      <p>
-                        <strong>Popular Destinations</strong>
-                      </p>
-                    </v-flex> -->
 
                     <v-flex
                       xs6
@@ -170,7 +162,7 @@
                   </v-layout>
                 </v-container>
               </material-card>
-            </v-flex>
+            </v-flex> -->
 
             <v-container
               fill-height
@@ -692,6 +684,222 @@
         </material-card>
       </v-flex>
 
+      <v-flex
+        xs12
+      >
+        <v-snackbar
+          :color="'#e5b340'"
+          :right="true"
+          v-model="snackbar"
+          auto-height
+          :timeout="0"
+        >
+          <!-- <v-icon
+            color="white"
+            class="mr-3"
+          >
+            mdi-bell-plus
+          </v-icon> -->
+              <!-- <v-flex
+                xs12
+                md12
+              > -->
+                <material-card
+                  class="popular-dest-card"
+                >
+
+                  <v-container
+                    fill-height
+                    fluid
+                    style=" padding: 0;"
+                  >
+                    <v-layout
+                      row
+                      wrap
+                    >
+
+                      <!-- <v-flex
+                        xs6
+                        sm6
+                        md4
+                        lg3
+                        offset-lg1
+                      > -->
+                      <v-flex
+                        xs12
+                      >
+                        <a href="#">
+                          <div class="popular-cards">
+                            <div style="background-image: url(&quot;//t2.gstatic.com/images?q=tbn:ANd9GcSOqctRBN11M_JybWWurC4mNxLmSZwXb_PjvHyTpVQBwD8a1o7tZZL2saF2rgPa4U9IU-dPeahv&quot;);">
+                            </div>
+                            <div>
+                              <div style="font-size:12px;">
+                                <h4><strong style="font-size:15px;">Orlando</strong></h4>
+                                <div>
+                                  <span>
+                                    <span>One Way</span>
+                                  </span>
+                                </div>
+                                <div>
+                                  <img src="//www.gstatic.com/flights/airline_logos/32px/AA.png" class="logo" alt="American" title="American" height="16" width="16">
+                                  <span> 1 stop</span>
+                                  <br>
+                                  <span>5h 5m</span>
+                                </div>
+                              </div>
+                              <div>
+                                <span><strong style="font-size:13px;">Great value $299</strong></span>
+                              </div>
+                            </div>
+                          </div>
+                        </a>
+                      </v-flex>
+
+                      <v-flex
+                        xs12
+                      >
+                        <a href="#">
+                          <div class="popular-cards">
+                            <div style="background-image: url(&quot;//t2.gstatic.com/images?q=tbn:ANd9GcSOqctRBN11M_JybWWurC4mNxLmSZwXb_PjvHyTpVQBwD8a1o7tZZL2saF2rgPa4U9IU-dPeahv&quot;);">
+                            </div>
+                            <div>
+                              <div style="font-size:12px;">
+                                <h4><strong style="font-size:15px;">Boston</strong></h4>
+                                <div>
+                                  <span>
+                                    <span>One Way</span>
+                                  </span>
+                                </div>
+                                <div>
+                                  <img src="//www.gstatic.com/flights/airline_logos/32px/AA.png" class="logo" alt="American" title="American" height="16" width="16">
+                                  <span> 1 stop</span>
+                                  <br>
+                                  <span>5h 5m</span>
+                                </div>
+                              </div>
+                              <div>
+                                <span><strong style="font-size:13px;">Great value $299</strong></span>
+                              </div>
+                            </div>
+                          </div>
+                        </a>
+                      </v-flex>
+
+                      <v-flex
+                        xs12
+                      >
+                        <a href="#">
+                          <div class="popular-cards">
+                            <div style="background-image: url(&quot;//t2.gstatic.com/images?q=tbn:ANd9GcSOqctRBN11M_JybWWurC4mNxLmSZwXb_PjvHyTpVQBwD8a1o7tZZL2saF2rgPa4U9IU-dPeahv&quot;);">
+                            </div>
+                            <div>
+                              <div style="font-size:12px;">
+                                <h4><strong style="font-size:15px;">Dallas</strong></h4>
+                                <div>
+                                  <span>
+                                    <span>One Way</span>
+                                  </span>
+                                </div>
+                                <div>
+                                  <img src="//www.gstatic.com/flights/airline_logos/32px/AA.png" class="logo" alt="American" title="American" height="16" width="16">
+                                  <span> 1 stop</span>
+                                  <br>
+                                  <span>5h 5m</span>
+                                </div>
+                              </div>
+                              <div>
+                                <span><strong style="font-size:13px;">Great value $299</strong></span>
+                              </div>
+                            </div>
+                          </div>
+                        </a>
+                      </v-flex>
+      
+                      <!-- <v-flex
+                        xs6
+                        sm6
+                        md4
+                        lg3
+                      > -->
+                      <v-flex
+                        xs12
+                      >
+                        <a href="#">
+                          <div class="popular-cards">
+                            <div style="background-image: url(&quot;//t2.gstatic.com/images?q=tbn:ANd9GcSOqctRBN11M_JybWWurC4mNxLmSZwXb_PjvHyTpVQBwD8a1o7tZZL2saF2rgPa4U9IU-dPeahv&quot;);">
+                            </div>
+                            <div>
+                              <div style="font-size:12px;">
+                                <h4><strong style="font-size:15px;">Reno</strong></h4>
+                                <div>
+                                  <span>
+                                    <span>One Way</span>
+                                  </span>
+                                </div>
+                                <div>
+                                  <img src="//www.gstatic.com/flights/airline_logos/32px/AA.png" class="logo" alt="American" title="American" height="16" width="16">
+                                  <span> Nonstop</span>
+                                  <br>
+                                  <span>6h 5m</span>
+                                </div>
+                              </div>
+                              <div>
+                                <span><strong style="font-size:13px;">Great value $221</strong></span>
+                              </div>
+                            </div>
+                          </div>
+                        </a>
+                      </v-flex>
+
+                      <!-- <v-flex
+                        hidden-sm-and-down
+                        md4
+                        lg3
+                      > -->
+                      <v-flex
+                        hidden-sm-and-down
+                        md12
+                      >
+                        <a href="#">
+                          <div class="popular-cards">
+                            <div style="background-image: url(&quot;//t2.gstatic.com/images?q=tbn:ANd9GcSOqctRBN11M_JybWWurC4mNxLmSZwXb_PjvHyTpVQBwD8a1o7tZZL2saF2rgPa4U9IU-dPeahv&quot;);">
+                            </div>
+                            <div>
+                              <div style="font-size:12px;">
+                                <h4><strong style="font-size:15px;">New York</strong></h4>
+                                <div>
+                                  <span>
+                                    <span>One Way</span>
+                                  </span>
+                                </div>
+                                <div>
+                                  <img src="//www.gstatic.com/flights/airline_logos/32px/AA.png" class="logo" alt="American" title="American" height="16" width="16">
+                                  <span> 1 stop</span>
+                                  <br>
+                                  <span>2h 5m</span>
+                                </div>
+                              </div>
+                              <div>
+                                <span><strong style="font-size:13px;">Great value $144</strong></span>
+                              </div>
+                            </div>
+                          </div>
+                        </a>
+                      </v-flex>
+
+                    </v-layout>
+                  </v-container>
+                </material-card>
+              <!-- </v-flex> -->
+          <v-icon
+            size="25"
+            @click="snackbar = false"
+          >
+            mdi-close-circle
+          </v-icon>
+        </v-snackbar>
+      </v-flex>
+
     </v-layout>
   </v-container>
 </template>
@@ -708,6 +916,7 @@ export default {
   },
   data () {
     return {
+      snackbar: true,
       imgLink: './img/Flight-King.png',
       showFlightDetailsToggle: true,
       showReturn: true,
@@ -1202,6 +1411,7 @@ export default {
 }
 
 .popular-dest-card {
+  width:230px;
   background: inherit !important;
   box-shadow: none !important;
 }
